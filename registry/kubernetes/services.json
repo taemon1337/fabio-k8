@@ -1,0 +1,133 @@
+{
+  "kind": "ServiceList",
+  "apiVersion": "v1",
+  "metadata": {
+    "selfLink": "/api/v1/services",
+    "resourceVersion": "323"
+  },
+  "items": [
+    {
+      "metadata": {
+        "name": "kubernetes",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/services/kubernetes",
+        "uid": "4d8caa5b-1207-11e8-b959-0242ac110012",
+        "resourceVersion": "14",
+        "creationTimestamp": "2018-02-15T04:18:40Z",
+        "labels": {
+          "component": "apiserver",
+          "provider": "kubernetes"
+        }
+      },
+      "spec": {
+        "ports": [
+          {
+            "name": "https",
+            "protocol": "TCP",
+            "port": 443,
+            "targetPort": 8443
+          }
+        ],
+        "clusterIP": "10.96.0.1",
+        "type": "ClusterIP",
+        "sessionAffinity": "ClientIP",
+        "sessionAffinityConfig": {
+          "clientIP": {
+            "timeoutSeconds": 10800
+          }
+        }
+      },
+      "status": {
+        "loadBalancer": {
+
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-dns",
+        "namespace": "kube-system",
+        "selfLink": "/api/v1/namespaces/kube-system/services/kube-dns",
+        "uid": "54917a2c-1207-11e8-b959-0242ac110012",
+        "resourceVersion": "113",
+        "creationTimestamp": "2018-02-15T04:18:52Z",
+        "labels": {
+          "kubernetes.io/name": "KubeDNS",
+          "addonmanager.kubernetes.io/mode": "Reconcile",
+          "k8s-app": "kube-dns"
+        },
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"labels\":{\"addonmanager.kubernetes.io/mode\":\"Reconcile\",\"k8s-app\":\"kube-dns\",\"kubernetes.io/name\":\"KubeDNS\"},\"name\":\"kube-dns\",\"namespace\":\"kube-system\"},\"spec\":{\"clusterIP\":\"10.96.0.10\",\"ports\":[{\"name\":\"dns\",\"port\":53,\"protocol\":\"UDP\"},{\"name\":\"dns-tcp\",\"port\":53,\"protocol\":\"TCP\"}],\"selector\":{\"k8s-app\":\"kube-dns\"}}}\n"
+        }
+      },
+      "spec": {
+        "ports": [
+          {
+            "name": "dns",
+            "protocol": "UDP",
+            "port": 53,
+            "targetPort": 53
+          },
+          {
+            "name": "dns-tcp",
+            "protocol": "TCP",
+            "port": 53,
+            "targetPort": 53
+          }
+        ],
+        "selector": {
+          "k8s-app": "kube-dns"
+        },
+        "clusterIP": "10.96.0.10",
+        "type": "ClusterIP",
+        "sessionAffinity": "None"
+      },
+      "status": {
+        "loadBalancer": {
+
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "kubernetes-dashboard",
+        "namespace": "kube-system",
+        "selfLink": "/api/v1/namespaces/kube-system/services/kubernetes-dashboard",
+        "uid": "5472986c-1207-11e8-b959-0242ac110012",
+        "resourceVersion": "97",
+        "creationTimestamp": "2018-02-15T04:18:52Z",
+        "labels": {
+          "kubernetes.io/minikube-addons": "dashboard",
+          "kubernetes.io/minikube-addons-endpoint": "dashboard",
+          "addonmanager.kubernetes.io/mode": "Reconcile",
+          "app": "kubernetes-dashboard"
+        },
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"labels\":{\"addonmanager.kubernetes.io/mode\":\"Reconcile\",\"app\":\"kubernetes-dashboard\",\"kubernetes.io/minikube-addons\":\"dashboard\",\"kubernetes.io/minikube-addons-endpoint\":\"dashboard\"},\"name\":\"kubernetes-dashboard\",\"namespace\":\"kube-system\"},\"spec\":{\"ports\":[{\"nodePort\":30000,\"port\":80,\"targetPort\":9090}],\"selector\":{\"app\":\"kubernetes-dashboard\"},\"type\":\"NodePort\"}}\n"
+        }
+      },
+      "spec": {
+        "ports": [
+          {
+            "protocol": "TCP",
+            "port": 80,
+            "targetPort": 9090,
+            "nodePort": 30000
+          }
+        ],
+        "selector": {
+          "app": "kubernetes-dashboard"
+        },
+        "clusterIP": "10.100.58.173",
+        "type": "NodePort",
+        "sessionAffinity": "None",
+        "externalTrafficPolicy": "Cluster"
+      },
+      "status": {
+        "loadBalancer": {
+
+        }
+      }
+    }
+  ]
+}

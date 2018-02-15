@@ -111,6 +111,7 @@ type Registry struct {
 	Static  Static
 	File    File
 	Consul  Consul
+  Kubernetes Kubernetes
 	Timeout time.Duration
 	Retry   time.Duration
 }
@@ -143,3 +144,17 @@ type Consul struct {
 	CheckTLSSkipVerify                  bool
 	CheckDeregisterCriticalServiceAfter string
 }
+
+type Kubernetes struct {
+	ApiUrl                              string
+	Token                               string
+	ServicePath                         string
+  ExtDomain                           string
+  IntDomain                           string
+	NoRouteHTML                         string
+	CheckInterval                       time.Duration
+	CheckTimeout                        time.Duration
+	CheckScheme                         string
+	CheckTLSSkipVerify                  bool
+}
+

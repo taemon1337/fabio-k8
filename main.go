@@ -28,6 +28,7 @@ import (
 	"github.com/fabiolb/fabio/proxy/tcp"
 	"github.com/fabiolb/fabio/registry"
 	"github.com/fabiolb/fabio/registry/consul"
+	"github.com/fabiolb/fabio/registry/kubernetes"
 	"github.com/fabiolb/fabio/registry/file"
 	"github.com/fabiolb/fabio/registry/static"
 	"github.com/fabiolb/fabio/route"
@@ -357,6 +358,8 @@ func initBackend(cfg *config.Config) {
 			registry.Default, err = static.NewBackend(&cfg.Registry.Static)
 		case "consul":
 			registry.Default, err = consul.NewBackend(&cfg.Registry.Consul)
+		case "kubernetes":
+			registry.Default, err = kubernetes.NewBackend(&cfg.Registry.Kubernetes)
 		default:
 			exit.Fatal("[FATAL] Unknown registry backend ", cfg.Registry.Backend)
 		}
